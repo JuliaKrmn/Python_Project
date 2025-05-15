@@ -1,6 +1,18 @@
 import requests
+import json
+import os
+
+
 
 class GitHub: 
+        
+# Getting json file from folder 
+    @staticmethod
+    def load_expected_commits():
+        with open(os.path.join("resources", "expected_commits.json"), "r") as f:
+            return json.load(f)
+    
+
     #commit_api = requests.get (f" https://api.github.com/repos/{owner}/{repo}/commits")
     # def get_user_defunkt(self):
     #     r = requests.get("https://api.github.com/users/defunkt")
@@ -26,29 +38,48 @@ class GitHub:
 
         return body
     
-    def recieve_emojis(self, name):
+    def nonexisting_emoji_status(self):
+        return requests.get("https://api.github.com/emojis_usa")
+        # return r.status_code 
+ 
+    #This two  functions wokr with one API
+   #---------------------------------------------  
+    
+    def recieve_emojis(self):
         r = requests.get(f"https://api.github.com/emojis")
         body = r.json()
 
         return body
+    
+    def get_emojis_status(self):
+        r = requests.get("https://api.github.com/emojis")
+        return r.status_code
 
+
+   
    #This three  functions wokr with one API
    #--------------------------------------------- 
-    def search_commits (self, owner, repo):
-        r = requests.get (f" https://api.github.com/repos/{owner}/{repo}/commits")
-        # status_code = r.status_code        
-        body = r.json()
+    def commits_url(self, owner, repo): #This is a function for universal use in other functions related to the same API
+        return f"https://api.github.com/repos/{owner}/{repo}/commits"
 
-        # return [status_code, body] 
-        return body
-    
-    def search_status_code(self, owner, repo):
-        r = requests.get (f" https://api.github.com/repos/{owner}/{repo}/commits")
+    def search_commits(self, owner, repo): #Returns all .json body
+        r = requests.get(self.commits_url(owner, repo))
+        return r.json()
 
+    def search_status_code(self, owner, repo): #Returns status only
+        r = requests.get (self.commits_url(owner, repo))
         return r.status_code 
     
-    def commits_work_with_parameters (self, owner, repo, author):
-        r = requests.get (f" https://api.github.com/repos/{owner}/{repo}/commits", params = {"author": author, "commiter": author})
-        
+    def commits_work_with_parameters (self, owner, repo, author): #Returns search with parameters
+        r = requests.get (self.commits_url(owner, repo), params = {"author": author, "commiter": author})
         return r  
+    
+    def commits_where_head_is(self, owner, repo, sha):
+        r = requests.get (self.commits_url(owner, repo) + f"/{sha}/branches-where-head")
+        return r
     #-----------------------------------------------------   
+
+
+
+        
+    
