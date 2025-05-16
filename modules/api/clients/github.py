@@ -1,6 +1,8 @@
 import requests
 import json
 import os
+import jsonschema
+from jsonschema import validate
 
 
 
@@ -12,6 +14,10 @@ class GitHub:
         with open(os.path.join("resources", "expected_commits.json"), "r") as f:
             return json.load(f)
     
+    @staticmethod
+    def load_emojis_expected_schema():
+        with open(os.path.join("resources", "emojis_schema.json"), "r") as f:
+            return json.load(f)
 
     #commit_api = requests.get (f" https://api.github.com/repos/{owner}/{repo}/commits")
     # def get_user_defunkt(self):

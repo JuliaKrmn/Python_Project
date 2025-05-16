@@ -1,3 +1,4 @@
+from jsonschema import validate
 import pytest
 
 from modules.api.clients.github import GitHub
@@ -68,6 +69,13 @@ def test_emojis_wrong_url(github_api):
     response_text = r.json()  
     assert "message" in response_text
     assert response_text["message"] == "Not Found"
+
+#Call a json schema to compare
+@pytest.mark.emojis
+def test_compare_emojisschema_with_fileschema(github_api):
+    saved_schema = GitHub.load_emojis_expected_schema()
+    api_responce = github_api.recieve_emojis()
+    validate (instance=api_responce, schema=saved_schema)
 
 
 #-----------------Commits API from Github --------------------------------------------------------------------------------
@@ -149,8 +157,6 @@ def test_compare_setapi_with_setfile(github_api):
     for expected, api_responce in zip(expected, api_responce):
         assert set(api_responce.keys()) == set(expected.keys())
 
-#Compare structure of .json on file and in API using schema
-#I have schema on file, but GitHub API doesnt return scema 
 
 # print("Status code:", status)
 # print("Rate limit:", headers.get("X-RateLimit-Remaining"))
@@ -160,4 +166,5 @@ def test_compare_setapi_with_setfile(github_api):
 #     # assert (r["author"]) == "Julia Korman"
 #     # assert (r["email"]) == "korman.julia@gmail.com"
 #     # assert (r["commits"]) != 0
+
 
