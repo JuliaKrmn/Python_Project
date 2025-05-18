@@ -54,6 +54,12 @@ class Selectors(BasePage):
     cart_is_empty = By.CSS_SELECTOR, "div.cart-empty"
 
     #Login & Account Locators
+    first_name = By.ID, "firstname"
+    last_name = By.ID, "lastname"
+    email = By.ID, "email_address"
+    password = By.ID, "password"
+    password_confirmation = By.ID, "password-confirmation"
+    create_acount_button = By.CSS_SELECTOR, '[title="Create an Account"]'
     login_email = By.ID, "email"
     login_password = By.ID, "pass"
     login_button = By.ID, "send2"

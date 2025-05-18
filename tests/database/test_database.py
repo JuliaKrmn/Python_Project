@@ -123,7 +123,7 @@ def test_products_out_of_stock():
 
 #Update customer address: Ensure update is reflected in SELECT.
 
-@pytest.mark.database1
+@pytest.mark.database
 def test_customer_address_update():
     db = Database()
     db.insert_customer(99, 'Julia', 'Navi Ovadia', 'Ashdod', 786543, 'Israel')

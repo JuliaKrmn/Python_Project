@@ -6,6 +6,7 @@ from selenium.webdriver.support import expected_conditions as EC
 import time
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains
+from typing import Any
 
 
     #------------------My tests-----------------------
@@ -183,6 +184,50 @@ class ShopPage(BasePage):
         
         assert "You have no items in your shopping cart." in self.driver.page_source
 
-    def create_new_account(self, FirstName, LastName, email, password):
-        pass
+    def create_new_account(self, firstName, lastName, email, password):
+        self.driver.get(Selectors.current_url + "customer/account/create/")
+        wait = WebDriverWait(self.driver, 10)
+
+        # first_name = self.driver.find_element(*Selectors.first_name)
+        # first_name.send_keys(firstName)
+
+        # last_name = self.driver.find_element(*Selectors.last_name)
+        # last_name.send_keys(lastName)
+
+        # email_input = self.driver.find_element(*Selectors.email)
+        # email_input.send_keys(email)
+
+        # password_input = self.driver.find_element(*Selectors.password)
+        # password_input.send_keys(password)
+
+        # password_confirmation = self.driver.find_element(*Selectors.password_confirmation)
+        # password_confirmation.send_keys(password)
+
+
+        fields = [
+            (Selectors.first_name, firstName),
+            (Selectors.last_name, lastName),
+            (Selectors.email, email),
+            (Selectors.password, password),
+            (Selectors.password_confirmation, password),
+            ]
+
+        for selector, value in fields:
+            element = wait.until(EC.presence_of_element_located(selector))
+            element.send_keys(value)
+
+        create_account_button = self.driver.find_element(*Selectors.create_acount_button)
+        create_account_button.click()
+
+        time.sleep(5)
+
+        assert self.driver.title == "My Account"
+
+
+
+
+
+
+
+
 
