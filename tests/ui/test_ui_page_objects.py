@@ -21,7 +21,7 @@ def test_check_incorrect_username_page_object():
 @pytest.mark.independent_ui
 def test_create_account(fresh_driver: WebDriver):
     create_account = ShopPage(fresh_driver)
-    create_account.create_new_account("Author", "Latest", "autor.latest@email.com", "correct1_Password" )
+    create_account.create_new_account("Author", "Latest", "correct1_Password" ) # for testing purposes email is randomly generated 
     create_account.close()
     
 
