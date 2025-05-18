@@ -52,6 +52,7 @@ def test_product_insert():
 
     assert water_qnt[0][0] == 30
 
+
 @pytest.mark.database
 def test_product_delete():
     db = Database()
@@ -99,7 +100,7 @@ def test_product_insert_negative_quantity():
 
 
 #Negative test - inserting missing parameters of product - SQ@Lite accepts everythint! 
-@pytest.mark.database1
+@pytest.mark.database
 def test_product_insert_negative_quantity():
     db = Database()
     db.insert_product(7, "", "", -25)
@@ -109,7 +110,7 @@ def test_product_insert_negative_quantity():
         print(f"\033[91m[NOTE] Products with negative quantity found: {negative_quantities}\033[0m")
 
     assert True 
-    
+
 
 #Look for products with Zero quantity 
 @pytest.mark.database
@@ -121,6 +122,18 @@ def test_products_out_of_stock():
     db.delete_product_by_id(20)
 
 #Update customer address: Ensure update is reflected in SELECT.
+
+@pytest.mark.database1
+def test_customer_address_update():
+    db = Database()
+    db.insert_customer(99, 'Julia', 'Navi Ovadia', 'Ashdod', 786543, 'Israel')
+
+    db.update_customers_address (99, 'Navi', 'Jerusalem', 33666, 'Jordan')
+
+    water_qnt = db.get_customer_by_id(99)
+
+    assert water_qnt[0][1] == 'Julia'
+    assert water_qnt[0][3] == 'Jerusalem'
     
 #Update order date: Verify that it changes correctly.
 

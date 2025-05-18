@@ -10,6 +10,7 @@ class SignInPage(BasePage):
 
     def go_to(self):
         self.driver.get(SignInPage.URL)
+
     
     def try_login(self, username, password):
         #Знаходимо поле, в яке будемо вводити неправильне ім"я користувача та поштову адресу 
@@ -31,3 +32,5 @@ class SignInPage(BasePage):
 
     def check_title(self, expected_title):
         return self.driver.title == expected_title
+    
+   

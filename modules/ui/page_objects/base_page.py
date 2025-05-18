@@ -33,8 +33,9 @@ from selenium.webdriver.common.by import By
 
 class BasePage: 
 
-    def __init__(self) ->None:
-        self.driver = webdriver.Chrome()
+    def __init__(self, driver):
+        self.driver = driver # ✅ receives driver from test via fixture
 
     def close(self):
+        self.driver.delete_all_cookies()
         self.driver.close()

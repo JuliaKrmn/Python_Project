@@ -16,6 +16,12 @@ class Database():
         record = self.cursor.fetchall()
         return record
     
+    def get_customer_by_id(self, id):
+        query = f"SELECT  * FROM customers WHERE id = {id}"
+        self.cursor.execute(query)
+        record = self.cursor.fetchall()
+        return record
+    
     def get_all_products(self):
         query = "SELECT *  FROM  products"
         self.cursor.execute(query)
@@ -48,6 +54,17 @@ class Database():
     def insert_product(self, product_id, name, description, qnt):
         query = f"INSERT OR REPLACE INTO products (id, name, description, quantity) \
               VALUES ({product_id}, '{name}', '{description}', {qnt})"
+        self.cursor.execute(query)
+        self.connection.commit()
+
+    def insert_customer(self, customer_id, name, address, city, postalCode, country):
+        query = f"INSERT OR REPLACE INTO customers (id, name, address, city, postalCode, country) \
+              VALUES ({customer_id}, '{name}', '{address}', '{city}', '{postalCode}',  '{country}')"
+        self.cursor.execute(query)
+        self.connection.commit()
+
+    def update_customers_address(self, customer_id, address, city, postalCode, country):
+        query = f"UPDATE customers SET address = '{address}', city = '{city}',  postalCode = '{postalCode}', country = '{country}' WHERE id = {customer_id}"
         self.cursor.execute(query)
         self.connection.commit()
 
