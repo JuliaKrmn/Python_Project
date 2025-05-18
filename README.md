@@ -1,7 +1,7 @@
-**Python Project: Automated UI Testing Framework**
+**Python Project: Automated UI Testing Framework**  
 This project is an automated UI testing framework built using Python and Selenium WebDriver. It focuses on testing the user interface of a web-based shop application, ensuring that critical functionalities like account creation, login, and product search work as expected.
 
-**Features**
+**Features**  
 Page Object Model (POM): Structured and maintainable codebase using POM design pattern.
 Automated Test Cases: Comprehensive test coverage for user registration, login, and product search functionalities.
 Randomized Test Data: Utilizes dynamic data generation to ensure test independence and avoid conflicts.
