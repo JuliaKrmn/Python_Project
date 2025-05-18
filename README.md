@@ -10,19 +10,19 @@ Selenium WebDriver: Automates browser interactions for end-to-end testing.
 
 Project Structure
 
-Python_Project/
-├── modules/
-│   └── ui/
-│       ├── page_objects/
-│       │   ├── shop_page.py
-│       │   └── ...
-│       └── selectors/
-│           └── selectors.py
-├── tests/
-│   └── ui/
-│       └── test_ui_page_objects.py
-├── requirements.txt
-└── README.md
+Python_Project/  
+├── modules/  
+│   └── ui/  
+│       ├── page_objects/  
+│       │   ├── shop_page.py  
+│       │   └── ...  
+│       └── selectors/  
+│           └── selectors.py  
+├── tests/  
+│   └── ui/  
+│       └── test_ui_page_objects.py  
+├── requirements.txt  
+└── README.md  
 
 modules/ui/page_objects/: Contains Page Object classes representing different pages of the application.
 
