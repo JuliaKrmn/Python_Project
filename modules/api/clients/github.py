@@ -57,6 +57,9 @@ class GitHub:
 
         return body
     
+    def post(self):
+        r = requests.post()
+    
     def get_emojis_status(self):
         r = requests.get("https://api.github.com/emojis")
         return r.status_code

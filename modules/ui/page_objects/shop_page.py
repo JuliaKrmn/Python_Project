@@ -9,7 +9,8 @@ from selenium.webdriver.common.action_chains import ActionChains
 from typing import Any
 import random
 import string
-
+import playwright
+from playwright.sync_api import sync_playwright, expect
 
     #------------------My tests-----------------------
     #The idea - take all selectors out of code so we can reuse it constantly 
@@ -18,11 +19,15 @@ import string
 
 class ShopPage(BasePage):
 
-    def __init__(self, driver):
-        super().__init__(driver) # Sets self.driver
+    # def __init__(self, driver):
+    #     super().__init__(driver) # Sets self.driver
 
     def go_to_specific_page(self):
-        self.driver.get(Selectors.current_url)
+        with sync_playwright() as p:
+            browser = p.firefox.launch(headless=False)
+            page = browser.new_page()
+
+            page.goto(Selectors.current_url)
 
     def find_inactive_element(self, by, value):
         return self.driver.find_element(by, value)
