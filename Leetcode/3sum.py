@@ -1,14 +1,25 @@
 #https://leetcode.com/problems/3sum/
 
 import itertools
+from collections import defaultdict
 
 
 class Solution:
     def threeSum(self, nums: list[int]) -> list[list[int]]:
 
+        seen = defaultdict(int)
+        result = []
+
+        for num in nums:
+            if seen[num] < 2:
+                result.append(num)
+                seen[num] += 1
+
+
+
         newest_list = []
 
-        new_list = list(itertools.combinations(nums, 3))
+        new_list = list(itertools.combinations(result, 3))
 
         unique_items = list(dict.fromkeys(new_list))
 
