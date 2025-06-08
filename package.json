@@ -1,0 +1,26 @@
+{
+  "name": "python_project",
+  "version": "1.0.0",
+  "description": "**Python Project: Automated UI Testing Framework**   This project is an automated UI testing framework built using Python and Selenium WebDriver. It focuses on testing the user interface of a web-based shop application, ensuring that critical functionalities like account creation, login, and product search work as expected.",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JuliaKrmn/Python_Project.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JuliaKrmn/Python_Project/issues"
+  },
+  "homepage": "https://github.com/JuliaKrmn/Python_Project#readme",
+  "devDependencies": {
+    "cypress": "^14.4.1"
+  }
+}
