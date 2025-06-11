@@ -5,4 +5,10 @@ code_attempt.py
 new_code.py
 maximum_ways.py
 node_modules
-cypress
+cypress/e2e/1-getting-started
+cypress/e2e/2-advanced-examples
+cypress/fixtures/example.json
+cypress/support/commands.js
+cypress/support/e2e.js
+cypress/e2e/spec.cy.js
+node_modules
