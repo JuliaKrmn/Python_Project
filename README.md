@@ -33,3 +33,5 @@ tests/ui/: Includes test cases that utilize the Page Objects to perform UI tests
 requirements.txt: Lists all Python dependencies required to run the project.
 
 README.md: Provides an overview and instructions for the project.
+
+NOTE: The project is in the process of separating between Python/Playwright and  Javascript/Cypress 
